@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/extendCategory"
+    android:layout_height="match_parent">
+
+
+    <View
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:background="@drawable/rounder"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-29dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        app:layout_constraintStart_toEndOf="@+id/back"
+
+        app:layout_constraintTop_toTopOf="@+id/top"
+        android:gravity="center"
+        android:text="Choose Category"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/books"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="#DEDCDC"
+            android:orientation="horizontal">
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imageView1"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/book"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="false"
+                app:riv_tile_mode="clamp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Books"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/arrowright" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/accessories"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="#DEDCDC"
+            android:orientation="horizontal"
+            app:layout_editor_absoluteX="16dp">
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="9dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/accessrs"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="false"
+                app:riv_tile_mode="clamp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Accessories"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowright"
+                android:layout_marginStart="145dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/clothing"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="#DEDCDC"
+            android:orientation="horizontal"
+
+            app:layout_editor_absoluteX="16dp">
+
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="9dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/clothing"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="false"
+                app:riv_tile_mode="clamp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Clothing"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowright"
+                android:layout_marginStart="179dp"
+                android:layout_marginTop="20dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/gadgets"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="#DEDCDC"
+            android:orientation="horizontal">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="9dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/gad"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="false"
+                app:riv_tile_mode="clamp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Gadgets"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowright"
+                android:layout_marginStart="179dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:id="@+id/SchoolUniforms"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="#DEDCDC"
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="9dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/uniforms"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="false"
+                app:riv_tile_mode="clamp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Uniforms"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowright"
+                android:layout_marginStart="169dp"
+                android:layout_marginTop="20dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    tools:context=".auth.SingIn">
+
+    <View
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/rounder"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.397" />
+
+    <TextView
+
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="25dp"
+        android:text="WELCOME \n JAY!!"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
+
+      <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/botrounder"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+          <ScrollView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+
+
+         <LinearLayout
+             android:id="@+id/linearLayout31"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/top"
+             android:layout_marginHorizontal="30dp"
+             android:layout_marginStart="28dp"
+
+             android:layout_marginEnd="28dp"
+             android:orientation="vertical"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.0"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent">
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_marginTop="40dp"
+                 android:text="What do you prefer ?"
+                 android:textSize="20sp"
+                 android:textStyle="normal" />
+
+             <CheckBox
+
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="50dp"
+                 android:text="Uniforms"
+
+                 android:textColor="#595955"
+
+                 />
+
+             <CheckBox
+
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="10dp"
+                 android:text="Accessories"
+                 android:textColor="#595955"
+
+                 />
+
+             <CheckBox
+
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="10dp"
+                 android:text="School Supplies"
+                 android:textColor="#595955"
+
+                 />
+
+             <CheckBox
+
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="10dp"
+                 android:text="Gadgets"
+                 android:textColor="#595955"
+
+
+                 />
+
+             <CheckBox
+
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginTop="10dp"
+                 android:text="Stationeries"
+                 android:textColor="#595955"
+                 android:textStyle="normal"
+
+
+                 />
+
+             <Button
+                 android:id="@+id/button"
+                 android:layout_width="100dp"
+                 android:layout_height="20dp"
+                 android:layout_marginLeft="17dp"
+                 android:layout_marginTop="10dp"
+                 android:background="@drawable/skipbtn"
+                 android:text="Skip for now "
+                 android:textColor="#595955"
+
+                 android:textSize="10dp" />
+
+             <Button
+                 android:layout_width="217dp"
+                 android:layout_height="70dp"
+                 android:layout_gravity="center"
+                 android:layout_marginStart="69dp"
+                 android:layout_marginTop="40dp"
+                 android:layout_marginEnd="69dp"
+                 android:layout_marginRight="69dp"
+
+                 android:layout_marginBottom="83dp"
+                 android:background="@drawable/btncirle"
+                 android:text="GET STARTED?"
+                 android:textColor="@color/white"
+                 android:textSize="20sp"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/button" />
+         </LinearLayout>
+
+          </ScrollView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="57dp"
+
+        android:layout_height="73dp"
+
+        android:src="@drawable/welcome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

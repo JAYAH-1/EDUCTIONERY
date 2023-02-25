@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/CAPS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2365" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/additem.xml" value="0.245" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/botrounder.xml" value="0.2355" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/btncirle.xml" value="0.251" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/circle.xml" value="0.254" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/dropd.xml" value="0.2345" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/fav.xml" value="0.2635" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/home.xml" value="0.2635" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.277" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.252" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_category_24.xml" value="0.255" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.255" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2365" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_menu_camera.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/iitempimage.xml" value="0.255" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/imageround.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/layer.xml" value="0.255" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/like.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/line.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/line2.xml" value="0.2635" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/location.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/out.xml" value="0.243" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/prof.xml" value="0.255" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/profile.xml" value="0.2635" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/rounder.xml" value="0.2365" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/roundwhite.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/search.xml" value="0.278" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/searchbg.xml" value="0.255" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/selector.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/settings.xml" value="0.277" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/shape_rounded_rectangle.xml" value="0.1465" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/side_nav_bar.xml" value="0.256" />
+        <entry key="..\:/CAPS/app/src/main/res/drawable/skipbtn.xml" value="0.3905" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_add_item.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_content.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_feed.xml" value="0.25833333333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_feed1.xml" value="0.25833333333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_main2.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_onboarding_screnn.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_sign_up.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_sign_up2.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_sign_up3.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_sing_in.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/activity_starter_screen.xml" value="0.25" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/app_bar_content.xml" value="0.24635416666666668" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/app_bar_feed.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/app_bar_homepage_content.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/content_content.xml" value="0.24635416666666668" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/content_feed.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/content_feed2.xml" value="0.5" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/content_homefeed.xml" value="0.17527173913043478" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/content_homepage_content.xml" value="0.2714446952595937" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/content_userfeed.xml" value="0.17527173913043478" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/extendedategory.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/feed.xml" value="0.17527173913043478" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_account_settings.xml" value="0.42389380530973453" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_add_to_cart.xml" value="0.20649850363403163" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_extended_category.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_gallery.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_home.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_home2.xml" value="0.2" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_item_details.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_prof.xml" value="0.23645833333333333" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_slideshow.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/fragment_user_update_info.xml" value="0.4338768115942029" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/item_layout.xml" value="0.33" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/item_view.xml" value="0.5" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/nav_header_feed.xml" value="0.5" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/post.xml" value="0.5" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/rounder.xml" value="0.22916666666666666" />
+        <entry key="..\:/CAPS/app/src/main/res/layout/slider.xml" value="0.24947916666666667" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/activity_feed_drawer.xml" value="0.2734375" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/activity_main_drawer.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/content.xml" value="0.25052083333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/feed.xml" value="0.2734375" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/feed_drawer.xml" value="0.25833333333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/logout.xml" value="0.23697916666666666" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/menu.xml" value="0.25833333333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/menu/nav.xml" value="0.25833333333333336" />
+        <entry key="..\:/CAPS/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2365" />
+        <entry key="..\:/CAPS/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2365" />
+        <entry key="..\:/CAPS/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.2365" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

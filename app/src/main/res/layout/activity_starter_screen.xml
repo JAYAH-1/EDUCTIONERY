@@ -1,0 +1,63 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3a353b"
+    tools:context=".StarterScreen"
+
+
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/onboard" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EducTionery"
+        android:fontFamily="@font/dandel"
+        android:textColor="@color/white"
+        android:textSize="90sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="180dp"
+        android:layout_marginStart="108dp"
+        />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/startlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btncirle"
+            android:text="JOIN NOW !"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

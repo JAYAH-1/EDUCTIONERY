@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.SingIn"
+    android:id="@+id/CreateposT"
+    android:background="@color/white"
+    >
+
+    <View
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:background="@drawable/rounder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="CREATE POST"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/top"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="@+id/top"
+        app:layout_constraintTop_toTopOf="@+id/top"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="@+id/top"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/top"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add a Photo* " />
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/itemPhoto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/iitempimage"
+                app:riv_border_color="@color/white"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="false"
+                app:riv_tile_mode="clamp" />
+
+            <TextView
+                android:layout_width="330dp"
+                android:layout_height="0.2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:elevation="20dp">
+
+                <TextView
+
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:background="#DEDCDC"
+                    android:text="   Item name*"
+                    android:textColor="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/itemname"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:hint="Enter item name "
+                android:textSize="17sp"
+
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:elevation="20dp">
+
+                <TextView
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:background="#DEDCDC"
+                    android:text="   Item Description*"
+                    android:textColor="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <EditText
+                android:id="@+id/itemDescription"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:hint="Enter Item Description "
+                android:textSize="17sp"
+
+                />
+
+            <LinearLayout
+                android:id="@+id/CategoryShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#DEDCDC"
+                android:elevation="10dp"
+                android:orientation="horizontal"
+
+                android:requiresFadingEdge="horizontal">
+
+                <TextView
+                    android:id="@+id/seletedCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/ic_baseline_category_24"
+                    android:text="  Category" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="8dp"
+
+                    android:src="@drawable/arrowright" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/selectedCategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="Selected Category: " />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:elevation="20dp">
+
+                <TextView
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:background="#DEDCDC"
+                    android:text="   Set Price*"
+                    android:textColor="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/itemPrice"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:hint="Set Item Price "
+                android:textSize="17sp"
+
+                />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:elevation="20dp">
+
+                <TextView
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:background="#DEDCDC"
+                    android:text="   Set Item Tag*"
+                    android:textColor="@color/black" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <CheckBox
+                    android:id="@+id/RENT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RENT"
+
+
+                    />
+
+                <CheckBox
+                    android:id="@+id/TRADE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TRADE"
+
+
+                    />
+
+                <CheckBox
+                    android:id="@+id/BUY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FREE"
+
+
+                    />
+
+                <CheckBox
+                    android:id="@+id/SELL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SELL"
+
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Upload Item" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
