@@ -6,7 +6,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +26,7 @@ import com.example.eductionery.Adapters.SliderAdapter;
 import com.example.eductionery.Adapters.postAdapter;
 import com.example.eductionery.Model.Categories;
 import com.example.eductionery.Model.items;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,6 +35,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -64,7 +69,7 @@ public class Home extends Fragment {
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     FloatingActionButton additem;
-    List<Categories> items = new ArrayList<>();
+    List<Categories> Items = new ArrayList<>();
     prof p = new prof();
     int spanCount = 2; // 3 columns
     int spacing = 20; // 50px
@@ -83,51 +88,64 @@ public class Home extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        db = FirebaseFirestore.getInstance();
+        Query query = db.collection("Products");
 
         RecyclerView recyclerView1 =  view.findViewById(R.id.postItem);
 
         recyclerView1.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
+
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+
+
         gsc = GoogleSignIn.getClient(getContext(),gso);
         posted = new ArrayList<>();
-        postadapter = new postAdapter(getContext(), posted);
+
+
+        FirestoreRecyclerOptions<items> posts = new FirestoreRecyclerOptions.Builder<items>()
+                .setQuery(query, items.class)
+                .build();
+
+        postadapter = new postAdapter(posts);
         recyclerView1.addItemDecoration((new Decoration(spanCount, spacing, includeEdge)));
         recyclerView1.setAdapter(postadapter);
 
 
-        sliderView = view.findViewById(R.id.imageSlider);
+        postadapter.setOnItemClickListener(new postAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
+                items post = documentSnapshot.toObject(items.class);
+                String id = documentSnapshot.getId();
 
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView.startAutoCycle();
+                Fragment fragment = new ItemDetails();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.homeContainer, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
-
-        loadPost();
+            }
+        });
 
     }
 
 
-    public void loadPost() {
-        loadingbar = new ProgressDialog(getContext());
-        loadingbar.setTitle("Fetching new post...");
-        loadingbar.show();
-        db = FirebaseFirestore.getInstance();
-        db.collection("Products")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> dslist = queryDocumentSnapshots.getDocuments();
-                        for (DocumentSnapshot ds : dslist) {
-                            items post = ds.toObject(items.class);
-                            postadapter.add(post);
-                            loadingbar.dismiss();
-                        }
-                    }
-                });
+    @Override
+    public void onStart() {
+        super.onStart();
+        postadapter.startListening();
+
     }
 
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        postadapter.stopListening();
+
+}
 
 
     private void search(String text) {

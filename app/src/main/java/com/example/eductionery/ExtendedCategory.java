@@ -112,6 +112,7 @@ public class ExtendedCategory extends Fragment {
                         choosen =CategoryList[i];
                         bundle = new Bundle();
                         bundle.putString("key",choosen);
+
                     }
                 });
                 mbuilder.setNeutralButton("Select", new DialogInterface.OnClickListener() {
