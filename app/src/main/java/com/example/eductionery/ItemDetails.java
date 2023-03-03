@@ -1,5 +1,6 @@
 package com.example.eductionery;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,21 +12,25 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.eductionery.Chat.MainActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
 
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -42,7 +47,11 @@ public class ItemDetails extends Fragment {
     Button addtoCart;
     String itemState;
     FrameLayout fr;
+    View view;
+    ImageView chat;
+
     @Override
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -55,30 +64,40 @@ public class ItemDetails extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_details, container, false);
 
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
-            img = view.findViewById(R.id.imageDetail);
-            itemName = view.findViewById(R.id.itemname);
-           addtoCart = view.findViewById(R.id.addToCart);
-
-            Bundle bundle = this.getArguments();
+        view= inflater.inflate(R.layout.fragment_item_details, container, false);
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
             id = bundle.getString("id");
-           url = bundle.getString("url");
-           price = bundle.getString("price");
-           name = bundle.getString("name");
-           quant= bundle.getString("quant");
+            url = bundle.getString("url");
+            price = bundle.getString("price");
+            name = bundle.getString("name");
+            quant= bundle.getString("quant");
+        }
 
-          Glide.with(getContext())
-                  .load(imgurl)
-                  .into(img);
 
+ //        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+        chat = view.findViewById(R.id.chatSeller);
+        img = view.findViewById(R.id.imageDetail);
+        itemName = view.findViewById(R.id.itemname);
+        addtoCart = view.findViewById(R.id.addToCart);
+
+        if(url != null) {
+            Glide.with(getActivity())
+                    .load(imgurl)
+                    .into(img);
+        }
+        itemName.setText(name);
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         addtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +109,16 @@ public class ItemDetails extends Fragment {
 
             }
         });
+
+
+       return  view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
 
     }
 
@@ -163,6 +192,6 @@ public class ItemDetails extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+     //   ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
 }

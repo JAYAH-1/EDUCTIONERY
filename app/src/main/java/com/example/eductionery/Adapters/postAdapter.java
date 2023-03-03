@@ -20,6 +20,7 @@ import com.example.eductionery.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -60,10 +61,12 @@ public class postAdapter extends FirestoreRecyclerAdapter<items,postAdapter.myvi
         holder.description.setText("Description: "+model.getItemdesc());
         holder.categories.setText("Category:" +model.getItemcategories());
 
-
+    if(model != null){
         Glide.with(context)
                 .load(model.getImgurl())
                 .into(holder.post);
+
+    }
 
     }
 

@@ -74,7 +74,7 @@ public class createPost extends Fragment {
     TextView selectedCategory,selectPhoto;
     EditText itenmName , itemDescription , itemPrice;
     FrameLayout frame ;
-
+    View view;
 
 
 
@@ -88,13 +88,7 @@ public class createPost extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_post, container, false);
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        view= inflater.inflate(R.layout.fragment_create_post, container, false);
 
 
         buttonUpload = (Button) view.findViewById(R.id.upload);
@@ -108,8 +102,6 @@ public class createPost extends Fragment {
         itenmName = (EditText) view.findViewById(R.id.itemname);
         itemDescription = (EditText) view.findViewById(R.id.itemDescription);
 
-
-
         itemPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,8 +109,6 @@ public class createPost extends Fragment {
                 opeFileDialog();
             }
         });
-
-
 
         showCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +122,6 @@ public class createPost extends Fragment {
 
             }
         });
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,6 +136,17 @@ public class createPost extends Fragment {
                 uploadImage();
             }
         });
+        return   view;
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
     }
 
 
@@ -180,7 +180,7 @@ public class createPost extends Fragment {
                 }
 
 
-            });
+            }); 
 
     public void opeFileDialog(){
 

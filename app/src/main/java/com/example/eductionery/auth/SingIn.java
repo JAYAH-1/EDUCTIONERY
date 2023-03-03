@@ -22,6 +22,7 @@ import com.example.eductionery.Feed;
 import com.example.eductionery.Helper.remindmeHelper;
 import com.example.eductionery.Model.Users;
 import com.example.eductionery.R;
+import com.example.eductionery.StarterScreen;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -66,7 +67,7 @@ public class SingIn extends AppCompatActivity {
     private static final String TAG = "GOOGLEAUTH";
     FirebaseUser firebaseUser;
 
-
+    GoogleSignInAccount acct;
 
     @Override
 
@@ -92,7 +93,7 @@ public class SingIn extends AppCompatActivity {
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
 
-
+        acct = GoogleSignIn.getLastSignedInAccount(this);
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
@@ -170,7 +171,14 @@ public class SingIn extends AppCompatActivity {
        }
 
     }
+    public  boolean checkCurrentuser() {
+        if (acct != null) {
 
+            return true;
+        } else {
+            return false;
+        }
+    }
     private void validateCredentials() {
         String id ="",Username="",Email="";
         db = FirebaseFirestore.getInstance();
@@ -223,7 +231,8 @@ public class SingIn extends AppCompatActivity {
             try {
                 task.getResult(ApiException.class);
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                navigateToSecondActivity();
+                   navigateToSecondActivity();
+
                 firebaseAuthWithGoogle(account.getIdToken());
 
             } catch (ApiException e) {
@@ -252,7 +261,7 @@ public class SingIn extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             Toast.makeText(SingIn.this,"Signing in Success !",Toast.LENGTH_SHORT).show();
 
-                            //  updateUI(user);
+
                         } else {
 
                             Toast.makeText(SingIn.this,"Login failed",Toast.LENGTH_SHORT).show();
