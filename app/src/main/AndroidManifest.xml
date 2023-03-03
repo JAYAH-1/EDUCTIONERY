@@ -18,6 +18,9 @@
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="31">
         <activity
+            android:name=".HolderFragments"
+            android:exported="true" />
+        <activity
             android:name=".Feed"
             android:exported="true" />
         <activity
@@ -34,8 +37,8 @@
             android:exported="true" />
         <activity
             android:name=".OnboardingScrenn"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".auth.SignUp"
             android:exported="true" />

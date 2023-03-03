@@ -1,31 +1,25 @@
 package com.example.eductionery;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainer;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewbinding.ViewBinding;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.util.Log;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -33,38 +27,31 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.eductionery.Helper.remindmeHelper;
-import com.example.eductionery.auth.SingIn;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.common.net.InternetDomainName;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
-public class addItem extends AppCompatActivity {
+
+public class createPost extends Fragment {
 
 
     private static final String TAG = "";
@@ -87,43 +74,39 @@ public class addItem extends AppCompatActivity {
     TextView selectedCategory,selectPhoto;
     EditText itenmName , itemDescription , itemPrice;
     FrameLayout frame ;
-    
+
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_item);
-        getSupportActionBar().hide();
-        //binding view  man
-         Fragment extendedCategory = new ExtendedCategory();
-         buttonUpload = (Button) findViewById(R.id.upload);
-         itemPrice = (EditText) findViewById(R.id.itemPrice);
-        backButton =(ImageView)  findViewById(R.id.back);
-        itemPhoto = (ImageView) findViewById(R.id.itemPhoto);
-        Itemkey=UUID.randomUUID().toString();
-        fr = (FrameLayout) findViewById(R.id.CreateposT);
-        showCategory = (LinearLayout) findViewById(R.id.CategoryShow) ;
-        selectedCategory = (TextView) findViewById(R.id.selectedCategory);
-        itenmName = (EditText) findViewById(R.id.itemname);
-        itemDescription = (EditText) findViewById(R.id.itemDescription);
-        itemPrice = (EditText) findViewById(R.id.itemPrice);
-        //onclick
-        FragmentManager fragmentManager= this.getSupportFragmentManager();
-        fragmentManager.popBackStack();
-         Bundle b = new Bundle();
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_create_post, container, false);
+    }
 
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
 
-         if(b != null){
-             selected = selectedCategory.getText() +":"+b.getString("key");
-             selectedCategory.setText(selected);
-
-        }else{
-             selected = selectedCategory.getText().toString();
-         }
-
+        buttonUpload = (Button) view.findViewById(R.id.upload);
+        itemPrice = (EditText) view.findViewById(R.id.itemPrice);
+        backButton =(ImageView)  view.findViewById(R.id.back);
+        itemPhoto = (ImageView) view.findViewById(R.id.itemPhoto);
+        Itemkey= UUID.randomUUID().toString();
+        fr = (FrameLayout) view.findViewById(R.id.CreateposT);
+        showCategory = (LinearLayout) view.findViewById(R.id.CategoryShow) ;
+        selectedCategory = (TextView) view.findViewById(R.id.selectedCategory);
+        itenmName = (EditText) view.findViewById(R.id.itemname);
+        itemDescription = (EditText) view.findViewById(R.id.itemDescription);
 
 
 
@@ -142,6 +125,10 @@ public class addItem extends AppCompatActivity {
             public void onClick(View view) {
 
                 Fragment fragment = new ExtendedCategory();
+                FragmentTransaction fragmentTransaction =  getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null);
+                fragmentTransaction.setReorderingAllowed(true);
+                fragmentTransaction.replace(R.id.frameContainer, fragment);
+                fragmentTransaction.commit();
 
             }
         });
@@ -160,56 +147,57 @@ public class addItem extends AppCompatActivity {
                 uploadImage();
             }
         });
-
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
+
 
     @Override
     public void onStop() {
         super.onStop();
-            getSupportActionBar().hide();
+
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();;
+    }
 
     ActivityResultLauncher<Intent> sActActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                 if (result.getResultCode() == Activity.RESULT_OK){
-                     Intent data = result.getData();
-                      uri = data.getData();
-                     itemPhoto.setImageURI(uri);
+                    if (result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                        uri = data.getData();
+                        itemPhoto.setImageURI(uri);
 
 
-                 }
+                    }
 
                 }
 
 
-    });
+            });
 
     public void opeFileDialog(){
 
-            Intent  data = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            data.setType("*/*");
-            data = Intent.createChooser(data,"choose image");
-          sActActivityResultLauncher.launch(data);
-      }
+        Intent  data = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        data.setType("*/*");
+        data = Intent.createChooser(data,"choose image");
+        sActActivityResultLauncher.launch(data);
+    }
 
     private void uploadImage() {
 
-        loadingbar = new ProgressDialog(this);
+        loadingbar = new ProgressDialog(getContext());
         loadingbar.setTitle("Uploading File Please Wait...");
         loadingbar.show();
 
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.US);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.US);
         Date now = new Date();
         String fileName = formatter.format(now);
         storageReference = FirebaseStorage.getInstance().getReference("itemimages/"+fileName);
@@ -221,14 +209,14 @@ public class addItem extends AppCompatActivity {
             public void onFailure(@NonNull Exception e)
             {
                 String message = e.toString();
-                Toast.makeText(addItem.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error: " + message, Toast.LENGTH_SHORT).show();
                 loadingbar.dismiss();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
             {
-                Toast.makeText(addItem.this, "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -250,7 +238,7 @@ public class addItem extends AppCompatActivity {
                         {
                             uridownloaded = task.getResult().toString();
 
-                            Toast.makeText(addItem.this, "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();
 
                             SaveProductInfoToDatabase();
                         }
@@ -270,14 +258,14 @@ public class addItem extends AppCompatActivity {
         }else if(state.equals("notApprove")){
             return  false;
         }
-       return false;
+        return false;
     }
 
     private void SaveProductInfoToDatabase() {
 
-          itemName = itenmName.getText().toString();
-          item_Desc= itemDescription.getText().toString();
-          price= itemPrice.getText().toString();
+        itemName = itenmName.getText().toString();
+        item_Desc= itemDescription.getText().toString();
+        price= itemPrice.getText().toString();
 
         Calendar calendar = Calendar.getInstance();
 
@@ -287,17 +275,17 @@ public class addItem extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
-       auth  = FirebaseAuth.getInstance();
+        auth  = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         String CurrentUser = user.getUid();
 
         if(CurrentUser ==null){
 
-            Toast.makeText(addItem.this, "User must sign in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "User must sign in", Toast.LENGTH_SHORT).show();
         }
-         else
-         {
-             Map<String, Object> products = new HashMap<>();
+        else
+        {
+            Map<String, Object> products = new HashMap<>();
             products.put("imgurl", uridownloaded);
             products.put("itemtag", itemTag);
             products.put("itemcategories",catergory);
@@ -312,16 +300,18 @@ public class addItem extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             loadingbar.dismiss();
-                            Toast.makeText(addItem.this, "Post Submitted to be check first", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Post Submitted to be check first", Toast.LENGTH_SHORT).show();
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(addItem.this, "  Failed to upload  item", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "  Failed to upload  item", Toast.LENGTH_SHORT).show();
                         }
                     });
-         }
+        }
 
     }
+
+
 }

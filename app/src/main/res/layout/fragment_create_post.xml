@@ -32,7 +32,7 @@
         android:text="CREATE POST"
         android:textColor="@color/white"
         android:textSize="15sp"
-         />
+        />
 
     <ImageView
         android:id="@+id/back"

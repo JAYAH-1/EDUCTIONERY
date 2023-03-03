@@ -53,6 +53,7 @@ public class postAdapter extends FirestoreRecyclerAdapter<items,postAdapter.myvi
 
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull items model) {
+
        context = holder.post.getContext();
         holder.itemname.setText("Name: "+model.getItemname());
         holder.tag.setText("Tag: "+model.getItemtag());
@@ -71,19 +72,24 @@ public class postAdapter extends FirestoreRecyclerAdapter<items,postAdapter.myvi
     {
         TextView tag,itemname ,description,categories;
         ImageView post;
+
         public myviewholder(@NonNull View itemView) {
+
             super(itemView);
+
             tag = itemView.findViewById(R.id.tag);
             itemname = itemView.findViewById(R.id.itemName);
             description = itemView.findViewById(R.id.description);
             categories = itemView.findViewById(R.id.ctgries);
             post = itemView.findViewById(R.id.post);
 
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAbsoluteAdapterPosition();
+                    int position = getBindingAdapterPosition();
                     if (position != RecyclerView.NO_POSITION && listener != null) {
+
                         listener.onItemClick(getSnapshots().getSnapshot(position), position);
 
                     }

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.eductionery.Adapters.CategoriesAdapter;
@@ -74,7 +75,7 @@ public class Home extends Fragment {
     int spanCount = 2; // 3 columns
     int spacing = 20; // 50px
     boolean includeEdge = true;
-
+    RecyclerView recyclerView1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,11 +89,15 @@ public class Home extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         db = FirebaseFirestore.getInstance();
+
         Query query = db.collection("Products");
 
-        RecyclerView recyclerView1 =  view.findViewById(R.id.postItem);
+         recyclerView1 =  view.findViewById(R.id.postItem);
 
         recyclerView1.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
 
@@ -100,8 +105,6 @@ public class Home extends Fragment {
 
 
         gsc = GoogleSignIn.getClient(getContext(),gso);
-        posted = new ArrayList<>();
-
 
         FirestoreRecyclerOptions<items> posts = new FirestoreRecyclerOptions.Builder<items>()
                 .setQuery(query, items.class)
@@ -111,18 +114,37 @@ public class Home extends Fragment {
         recyclerView1.addItemDecoration((new Decoration(spanCount, spacing, includeEdge)));
         recyclerView1.setAdapter(postadapter);
 
-
         postadapter.setOnItemClickListener(new postAdapter.OnItemClickListener() {
             @Override
+
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
                 items post = documentSnapshot.toObject(items.class);
-                String id = documentSnapshot.getId();
+                String id = documentSnapshot.getId().toString();
+
+                String name = post.getItemname();
+                String url = post.getImgurl().toString();
+                Bundle b= new Bundle();
+                String price =post.getPrice();
+                String quant = post.getQuant();
+
+
+                if(id != null){
+                    Log.d("Test",post.getItemname());
+                    Toast.makeText(getContext(), url, Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context, "id: null", Toast.LENGTH_SHORT).show();
+                }
+                b.putString("url",url);
+                b.putString("id",id);
+                b.putString("name",name);
+                b.putString("price",price);
 
                 Fragment fragment = new ItemDetails();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.homeContainer, fragment);
+                fragment.setArguments(b);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
@@ -136,6 +158,9 @@ public class Home extends Fragment {
     public void onStart() {
         super.onStart();
         postadapter.startListening();
+        postadapter.notifyDataSetChanged();
+        recyclerView1.getRecycledViewPool().clear();
+
 
     }
 

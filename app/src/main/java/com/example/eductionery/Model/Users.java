@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 public class Users implements Serializable {
 
-
-
     String userID;
     String fullname;
     String address;
@@ -16,6 +14,17 @@ public class Users implements Serializable {
     String street;
     String userType;
     String region ;
+    String itemSate;
+    String accountStatus;
+    String phone;
+
+    public String getItemSate() {
+        return itemSate;
+    }
+
+    public void setItemSate(String itemSate) {
+        this.itemSate = itemSate;
+    }
 
     public String getAccountStatus() {
         return accountStatus;
@@ -25,7 +34,7 @@ public class Users implements Serializable {
         this.accountStatus = accountStatus;
     }
 
-    String accountStatus;
+
 
     public String getPhone() {
         return phone;
@@ -35,15 +44,18 @@ public class Users implements Serializable {
         this.phone = phone;
     }
 
-    String phone;
+
 
 
     public Users() {
 
     }
 
-    public Users(String userType,String phone, String fullname, String address, String email, String password, String confirmedPass, String postal, String street, String region ,String accountStatus) {
+    public Users(String userType,String phone, String fullname, String address, String email, String password, String confirmedPass, String postal, String street, String region ,String accountStatus ,String itemSate) {
 
+
+
+        this.itemSate = itemSate;
         this.accountStatus = accountStatus;
         this.fullname = fullname;
         this.address = address;
@@ -137,10 +149,6 @@ public class Users implements Serializable {
     public void setConfirmedPass(String confirmedPass) {
         this.confirmedPass = confirmedPass;
     }
-
-
-
-
 
 
 }

@@ -36,7 +36,6 @@ public class ExtendedCategory extends Fragment {
         gadgets = view.findViewById(R.id.gadgets);
         uniforms = view.findViewById(R.id.SchoolUniforms);
 
-
         books.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +62,7 @@ public class ExtendedCategory extends Fragment {
                 mdiaglog.show();
             }
         });
+
 
 
         gadgets.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +127,8 @@ public class ExtendedCategory extends Fragment {
         });
 
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

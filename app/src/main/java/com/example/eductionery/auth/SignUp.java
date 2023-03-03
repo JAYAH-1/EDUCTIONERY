@@ -172,7 +172,8 @@ public class SignUp extends AppCompatActivity {
 
     private void saveAccount(String userType,String phone, String fullname, String email, String password, String confirmedPass, String postal, String street, String region){
         FirebaseAuth aut = FirebaseAuth.getInstance();
-        String id  = aut.getUid().toString();
+        FirebaseUser user = aut.getCurrentUser();
+        String id  = user.getUid().toString();
         HashMap<String, Object> NormalAccount  = new HashMap<>();
         NormalAccount.put("fullname", fullname);
         NormalAccount.put("userType", userType);
@@ -184,7 +185,6 @@ public class SignUp extends AppCompatActivity {
         NormalAccount.put("confirmedPass", confirmedPass);
         NormalAccount.put("postal", postal);
         NormalAccount.put("phone", phone);
-
 
             db = FirebaseFirestore.getInstance();
             db.collection("FirebaseAuthUsers").document(id)

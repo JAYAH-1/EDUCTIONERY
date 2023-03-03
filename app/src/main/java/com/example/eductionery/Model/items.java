@@ -7,8 +7,45 @@ public class items {
     private String itemtag;
     private String itemcategories;
     private String itemdesc;
+    private  String state;
+
+    private String price;
+    private  String uploadedate;
+    private   String uploadedtime;
+
+    private  String quant;
+    public String getQuant() {
+        return quant;
+    }
+
+    public void setQuant(String quant) {
+        this.quant = quant;
+    }
 
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public items(){}
+
+    public items(String price,String id ,String imgurl, String itemname, String itemtag, String itemcategories, String itemdesc,String uploadedate,String uploadedtime,String state,String quant) {
+        this.imgurl = imgurl;
+        this.itemname = itemname;
+        this.itemtag = itemtag;
+        this.price=price;
+        this.itemcategories = itemcategories;
+        this.itemdesc = itemdesc;
+        this.id= id;
+        this.uploadedate=uploadedate;
+        this.uploadedtime=uploadedtime;
+        this.state=state;
+        this.quant =quant;
+    }
 
     public String getState() {
         return state;
@@ -16,26 +53,6 @@ public class items {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    private  String state;
-
-    String uploadedate;
-    String uploadedtime;
-
-
-    public items(){}
-
-    public items(String id ,String imgurl, String itemname, String itemtag, String itemcategories, String itemdesc,String uploadedate,String uploadedtime,String state) {
-        this.imgurl = imgurl;
-        this.itemname = itemname;
-        this.itemtag = itemtag;
-        this.itemcategories = itemcategories;
-        this.itemdesc = itemdesc;
-        this.id= id;
-        this.uploadedate=uploadedate;
-        this.uploadedtime=uploadedtime;
-        this.state=state;
     }
     public String getId() {
         return id;

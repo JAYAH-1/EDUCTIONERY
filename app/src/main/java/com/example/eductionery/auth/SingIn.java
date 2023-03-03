@@ -22,6 +22,7 @@ import com.example.eductionery.Feed;
 import com.example.eductionery.Helper.remindmeHelper;
 import com.example.eductionery.Model.Users;
 import com.example.eductionery.R;
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -92,10 +93,8 @@ public class SingIn extends AppCompatActivity {
         gsc = GoogleSignIn.getClient(this,gso);
 
 
+
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-
-
-
 
 
         googleBtn.setOnClickListener(new View.OnClickListener() {
@@ -173,11 +172,19 @@ public class SingIn extends AppCompatActivity {
     }
 
     private void validateCredentials() {
-
+        String id ="",Username="",Email="";
         db = FirebaseFirestore.getInstance();
-        String id = mAuth.getCurrentUser().getUid();
-        String Username = mAuth.getCurrentUser().getDisplayName();
-        String Email = mAuth.getCurrentUser().getEmail();
+        FirebaseUser user = mAuth.getCurrentUser();
+         user=mAuth.getCurrentUser();
+
+
+       if(user != null){
+           id = user.getUid();
+            Username = user.getDisplayName();
+            Email = user.getEmail();
+       }
+
+
 
         HashMap<String, Object> authGoogle = new HashMap<>();
         authGoogle.put("username", Username);
@@ -205,7 +212,6 @@ public class SingIn extends AppCompatActivity {
         Intent signInIntent = gsc.getSignInIntent();
         startActivityForResult(signInIntent,1000);
 
-        validateCredentials();
 
     }
     @Override
