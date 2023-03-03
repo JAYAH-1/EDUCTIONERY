@@ -180,7 +180,7 @@ public class createPost extends Fragment {
                 }
 
 
-            });
+            }); 
 
     public void opeFileDialog(){
 

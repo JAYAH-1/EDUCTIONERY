@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -50,6 +51,9 @@ import java.util.List;
 
 
 public class Home extends Fragment {
+
+
+
     RecyclerView recview;
     SliderView sliderView;
     CategoriesAdapter adapter;
@@ -76,6 +80,7 @@ public class Home extends Fragment {
     int spacing = 20; // 50px
     boolean includeEdge = true;
     RecyclerView recyclerView1;
+    private  FragmentContainer container;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +103,8 @@ public class Home extends Fragment {
         Query query = db.collection("Products");
 
          recyclerView1 =  view.findViewById(R.id.postItem);
+
+
 
         recyclerView1.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
 
@@ -140,13 +147,15 @@ public class Home extends Fragment {
                 b.putString("name",name);
                 b.putString("price",price);
 
-                Fragment fragment = new ItemDetails();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.homeContainer, fragment);
-                fragment.setArguments(b);
+                    Fragment fragment = new ItemDetails();
+
+                    FragmentManager fragmentManager =  getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+                    fragmentTransaction.setReorderingAllowed(true);
                 fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.frameContainer, fragment);
                 fragmentTransaction.commit();
+
 
             }
         });
@@ -183,6 +192,7 @@ public class Home extends Fragment {
         if (filter.isEmpty()) {
 
         } else {
+
             postadapter.filterData(filter);
         }
     }
