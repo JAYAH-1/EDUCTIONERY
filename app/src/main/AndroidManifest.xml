@@ -20,7 +20,17 @@
         <activity
             android:name=".HolderFragments"
             android:exported="true" />
+
         <activity
+            android:name=".Chat.MessageActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".Chat.MainActivity"
+            android:exported="true" />
+        <activity
+
+
             android:name=".Feed"
             android:exported="true" />
         <activity

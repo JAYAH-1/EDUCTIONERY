@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -45,6 +46,7 @@ public class SignUp extends AppCompatActivity {
     String userType;
     String region ;
     String phone;
+    String urlString,status;
     final static public  String USER_KEY = "USER";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,6 @@ public class SignUp extends AppCompatActivity {
     private void CreateAccount() {
 
         String name = fullname.getText().toString();
-        String addrs = address.getText().toString();
         String password = passrd.getText().toString();
         String confirmed = confirmpass.getText().toString();
         String mail = email.getText().toString();
@@ -89,7 +90,7 @@ public class SignUp extends AppCompatActivity {
         userType="User";
         region ="";
         phone= "";
-
+        status="";
 
         if (TextUtils.isEmpty(name))
         {
@@ -138,8 +139,15 @@ public class SignUp extends AppCompatActivity {
 
 
                              }else {
+                                  FirebaseAuth auth = FirebaseAuth.getInstance();
+                                  FirebaseUser user = auth.getCurrentUser();
+                                  String id = user.getUid();
+                                  Uri url = user.getPhotoUrl();
+                                  urlString = url.toString();
+                                  if(user !=null){
+                                      saveAccount(status,urlString,id,userType, phone, name,mail , password,confirmed,postal,street,region);
+                                  }
 
-                                 saveAccount(userType, phone, name,mail , password,confirmed,postal,street,region);
                                  Toast.makeText(SignUp.this,
                                          "Successfully Created.", Toast.LENGTH_SHORT).show();
                                  Intent intent = new Intent(SignUp.this, SingIn.class);
@@ -152,7 +160,13 @@ public class SignUp extends AppCompatActivity {
                      }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                          @Override
                          public void onSuccess(AuthResult authResult) {
-                             saveAccount(userType, phone, name,mail , password,confirmed,postal,street,region);
+                             FirebaseAuth auth = FirebaseAuth.getInstance();
+                             FirebaseUser user = auth.getCurrentUser();
+                             String id = user.getUid();
+
+                             if(user !=null){
+                                 saveAccount(status,urlString,id,userType, phone, name,mail , password,confirmed,postal,street,region);
+                             }
                              Toast.makeText(SignUp.this,
                                      "Successfully Created.", Toast.LENGTH_SHORT).show();
                              Intent intent = new Intent(SignUp.this, SingIn.class);
@@ -170,11 +184,14 @@ public class SignUp extends AppCompatActivity {
     }
 
 
-    private void saveAccount(String userType,String phone, String fullname, String email, String password, String confirmedPass, String postal, String street, String region){
+    private void saveAccount(String status ,String url ,String userID,String userType,String phone, String fullname, String email, String password, String confirmedPass, String postal, String street, String region){
         FirebaseAuth aut = FirebaseAuth.getInstance();
         FirebaseUser user = aut.getCurrentUser();
         String id  = user.getUid().toString();
         HashMap<String, Object> NormalAccount  = new HashMap<>();
+        NormalAccount.put("status", status);
+        NormalAccount.put("imgurl", urlString);
+        NormalAccount.put("userID", userID);
         NormalAccount.put("fullname", fullname);
         NormalAccount.put("userType", userType);
         NormalAccount.put("address", address);
@@ -190,6 +207,7 @@ public class SignUp extends AppCompatActivity {
             db.collection("FirebaseAuthUsers").document(id)
                     .set(NormalAccount).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
+
                         public void onSuccess(Void unused) {
                             Toast.makeText(SignUp.this, "Account Successfully created.", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getApplicationContext(), SingIn.class);

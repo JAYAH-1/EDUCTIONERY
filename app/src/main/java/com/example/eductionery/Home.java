@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -50,6 +51,9 @@ import java.util.List;
 
 
 public class Home extends Fragment {
+
+
+
     RecyclerView recview;
     SliderView sliderView;
     CategoriesAdapter adapter;
@@ -76,14 +80,19 @@ public class Home extends Fragment {
     int spacing = 20; // 50px
     boolean includeEdge = true;
     RecyclerView recyclerView1;
+    private  FragmentContainer container;
+    private FrameLayout fragmentContainer;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
-        return inflater.inflate(R.layout.fragment_home2, container, false);
+     view =   inflater.inflate(R.layout.fragment_home2, container, false);
 
+
+    return  view;
     }
 
     @Override
@@ -92,12 +101,14 @@ public class Home extends Fragment {
 
 
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+    //     ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         db = FirebaseFirestore.getInstance();
 
         Query query = db.collection("Products");
 
          recyclerView1 =  view.findViewById(R.id.postItem);
+
+
 
         recyclerView1.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
 
@@ -140,13 +151,16 @@ public class Home extends Fragment {
                 b.putString("name",name);
                 b.putString("price",price);
 
-                Fragment fragment = new ItemDetails();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.homeContainer, fragment);
-                fragment.setArguments(b);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                    Fragment fragment = new ItemDetails();
+
+                    FragmentManager fragmentManager =  getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+                    fragmentTransaction.setReorderingAllowed(true);
+                    fragmentTransaction.addToBackStack(null);
+                    fragment.setArguments(b);
+                    fragmentTransaction.replace(R.id.holder, fragment);
+                    fragmentTransaction.commit();
+
 
             }
         });
@@ -183,6 +197,7 @@ public class Home extends Fragment {
         if (filter.isEmpty()) {
 
         } else {
+
             postadapter.filterData(filter);
         }
     }
